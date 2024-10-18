@@ -2,23 +2,25 @@ package parent.tests;
 
 import org.junit.jupiter.api.Test;
 import parent.pages.RegistrationPage;
+import parent.utils.homework.RandomUtils;
 
 public class PracticeFormOOPTest extends BaseTest {
-    String firstName = "Alexander";
-    String lastName = "3yd";
-    String userEmail = "3yd@corp.com";
-    String gender = "Male";
-    String userNumber = "9169169169";
-    String dayOfBirth = "26";
-    String monthOfBirth = "March";
-    String yearOfBirth = "2000";
-    String subject = "Math";
-    String hobbies = "Reading";
+    RandomUtils randomUtils = new RandomUtils();
+    String firstName = randomUtils.getFirstName();
+    String lastName = randomUtils.getLastName();
+    String userEmail = randomUtils.getUserEmail();
+    String gender = randomUtils.getGender();
+    String userNumber = randomUtils.getUserNumber();
+    String dayOfBirth = randomUtils.getDayOfBirth();
+    String monthOfBirth = randomUtils.getMonthOfBirth();
+    String yearOfBirth = randomUtils.getYearOfBirth();
+    String subject = randomUtils.getSubject();
+    String hobbies = randomUtils.getHobbies();
     String pictureWay = "src/test/resources/reading.jpeg";
     String pictureName = "reading.jpeg";
-    String address = "Some street 1";
-    String state = "NCR";
-    String city = "Delhi";
+    String address = randomUtils.getAddress();
+    String state = randomUtils.getState();
+    String city = randomUtils.getCity(state);
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
