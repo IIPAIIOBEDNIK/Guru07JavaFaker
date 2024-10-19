@@ -2,10 +2,14 @@ package parent.utils.homework;
 
 import com.github.javafaker.Faker;
 
-import java.util.Locale;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-public class RandomUtils {
+public class RandomStudentData {
     Faker faker = new Faker(new Locale("en-GB"));
+    SimpleDateFormat formatterDay = new SimpleDateFormat("dd");
+    SimpleDateFormat formatterMonth = new SimpleDateFormat("MMMM", Locale.ENGLISH);
+    SimpleDateFormat formatterYear = new SimpleDateFormat("yyyy");
 
 
     public String getFirstName() {
@@ -28,21 +32,32 @@ public class RandomUtils {
         return faker.phoneNumber().subscriberNumber(10);
     }
 
-    public String getDayOfBirth() {
-        return String.format("%02d", faker.number().numberBetween(1, 28));
+    public Date getDateOfBirth(){
+        return faker.date().birthday();
     }
 
-    public String getMonthOfBirth() {
-        return faker.options().option("January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December");
+    public String getWayPicture() {
+        return faker.options().option("src/test/resources/reading.jpeg");
     }
 
-    public String getYearOfBirth() {
-        return String.valueOf(faker.number().numberBetween(1900, 2020));
+    public String getNamePicture() {
+        return faker.options().option("reading.jpeg");
+    }
+
+    public String getDayOfBirth(Date dateOfBirthday) {
+        return formatterDay.format(dateOfBirthday);
+    }
+
+    public String getMonthOfBirth(Date dateOfBirthday) {
+        return formatterMonth.format(dateOfBirthday);
+    }
+
+    public String getYearOfBirth(Date dateOfBirthday) {
+        return formatterYear.format(dateOfBirthday);
     }
 
     public String getSubject() {
-        return faker.options().option("History", "Maths");
+        return faker.options().option("History", "Maths", "English", "Arts", "Economics");
     }
 
     public String getHobbies() {
@@ -62,10 +77,8 @@ public class RandomUtils {
             return faker.options().option("Delhi", "Gurgaon", "Noida");
         } else if ("Uttar Pradesh".equals(state)) {
             return faker.options().option("Agra", "Lucknow", "Merrut");
-        } else if ("Haryana".equals(state)) {
-            return faker.options().option("Karnal", "Panipat");
         } else {
-            return "";
+            return faker.options().option("Karnal", "Panipat");
         }
     }
 }

@@ -2,26 +2,29 @@ package parent.tests;
 
 import org.junit.jupiter.api.Test;
 import parent.pages.RegistrationPage;
-import parent.utils.homework.RandomUtils;
+import parent.utils.homework.RandomStudentData;
+
+import java.util.*;
 
 public class PracticeFormOOPTest extends BaseTest {
-    RandomUtils randomUtils = new RandomUtils();
-    String firstName = randomUtils.getFirstName();
-    String lastName = randomUtils.getLastName();
-    String userEmail = randomUtils.getUserEmail();
-    String gender = randomUtils.getGender();
-    String userNumber = randomUtils.getUserNumber();
-    String dayOfBirth = randomUtils.getDayOfBirth();
-    String monthOfBirth = randomUtils.getMonthOfBirth();
-    String yearOfBirth = randomUtils.getYearOfBirth();
-    String subject = randomUtils.getSubject();
-    String hobbies = randomUtils.getHobbies();
-    String pictureWay = "src/test/resources/reading.jpeg";
-    String pictureName = "reading.jpeg";
-    String address = randomUtils.getAddress();
-    String state = randomUtils.getState();
-    String city = randomUtils.getCity(state);
+    RandomStudentData randomStudentData = new RandomStudentData();
     RegistrationPage registrationPage = new RegistrationPage();
+    String firstName = randomStudentData.getFirstName();
+    String lastName = randomStudentData.getLastName();
+    String userEmail = randomStudentData.getUserEmail();
+    String gender = randomStudentData.getGender();
+    String userNumber = randomStudentData.getUserNumber();
+    Date dateOfBirthday = randomStudentData.getDateOfBirth();
+    String dayOfBirth = randomStudentData.getDayOfBirth(dateOfBirthday);
+    String monthOfBirth = randomStudentData.getMonthOfBirth(dateOfBirthday);
+    String yearOfBirth = randomStudentData.getYearOfBirth(dateOfBirthday);
+    String subject = randomStudentData.getSubject();
+    String hobbies = randomStudentData.getHobbies();
+    String pictureWay = randomStudentData.getWayPicture();
+    String pictureName = randomStudentData.getNamePicture();
+    String address = randomStudentData.getAddress();
+    String state = randomStudentData.getState();
+    String city = randomStudentData.getCity(state);
 
     @Test
     void successfulRegistrationTest() {
